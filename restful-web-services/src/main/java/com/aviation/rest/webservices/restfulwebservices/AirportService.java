@@ -2,17 +2,15 @@ package com.aviation.rest.webservices.restfulwebservices;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
 
 import com.aviation.rest.webservices.restfulwebservices.model.Airport;
 import com.aviation.rest.webservices.restfulwebservices.model.Airports;
 
 public class AirportService {
-	
+	public static final Logger log = LoggerFactory.getLogger(AirportService.class);//Logger.getLogger(AirportService.class.getName());
 //	@Value("${apiKey}")
 //	private String apiKey;
 	
@@ -29,7 +27,8 @@ public class AirportService {
 			airports.addAll(airport.getAirports());
 
 		} catch (Exception e) {
-			//log.error(e.getMessage());
+			log.error(e.getMessage(), e);
+			
 		}
 
 		return airports;
