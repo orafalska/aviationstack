@@ -3,6 +3,7 @@ package com.aviation.rest.webservices.restfulwebservices.controller;
 import java.util.List;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class AirportController {
 
 		return "Hello! To get airoports, please go to http://localhost:8080/airports";
 	}
-
+	@Cacheable("airports")
 	@GetMapping(path = "/airports")
 	public ResponseEntity<Object> getAirports() {
 		List<Airport> allAirports = airportService.getAirports();
