@@ -10,9 +10,7 @@ public class FlightList {
 	
 	public FlightList() {}
 	
-	public void getone() {
-		System.out.println(flightList.get(0).getFlight_date());
-	}
+	
 	public FlightList(List<Flight> flightList) {
 		super();
 		this.flightList = flightList;
@@ -28,6 +26,10 @@ public class FlightList {
 	
 	public List<Flight> findAllFlights(){
 		return flightList;
+	}
+	
+	public void addFlight(Flight flight) {
+		flightList.add(flight);
 	}
 
 

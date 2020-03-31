@@ -1,24 +1,39 @@
 package com.aviation.rest.webservices.restfulwebservices.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 public class DepartureArrival {
 
+	@JsonInclude(Include.NON_NULL)
 	@JsonProperty("airport")
 	private String airport;
+	@JsonInclude(Include.NON_NULL)
 	private String timezone;
+	@JsonInclude(Include.NON_NULL)
 	private String iata;
+	@JsonInclude(Include.NON_NULL)
 	private String icao;
+	@JsonInclude(Include.NON_NULL)
 	private String terminal;
+	@JsonInclude(Include.NON_NULL)
 	@JsonProperty("gate")
 	private String gate;
+	@JsonInclude(Include.NON_NULL)
 	private String delay;
+	@JsonInclude(Include.NON_NULL)
 	private String scheduled;
+	@JsonInclude(Include.NON_NULL)
 	private String estimated;
+	@JsonInclude(Include.NON_NULL)
 	private String actual;
+	@JsonInclude(Include.NON_NULL)
 	private String estimated_runway;
+	@JsonInclude(Include.NON_NULL)
 	private String actual_runway;
 	
 	
