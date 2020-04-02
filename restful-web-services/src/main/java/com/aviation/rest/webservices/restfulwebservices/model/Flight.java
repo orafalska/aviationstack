@@ -4,13 +4,15 @@ import java.sql.Date;
 
 import javax.annotation.sql.DataSourceDefinition;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Flight {
-	
-	private String flight_date;
+	@DateTimeFormat
+	private Date flight_date;
 	private String flight_status;
 	@JsonProperty("departure")
 	private DepartureArrival departure;
@@ -30,7 +32,7 @@ public class Flight {
 		super();
 	}
 
-	public Flight(String flight_date, String flight_status, DepartureArrival departure, DepartureArrival arrival,
+	public Flight(Date flight_date, String flight_status, DepartureArrival departure, DepartureArrival arrival,
 			Airline airline, NestedFlight flight, Aircraft aircraft, Live live) {
 		super();
 		this.flight_date = flight_date;
@@ -44,11 +46,11 @@ public class Flight {
 	}
 
 
-	public String getFlight_date() {
+	public Date getFlight_date() {
 		return flight_date;
 	}
 
-	public void setFlight_date(String flight_date) {
+	public void setFlight_date(Date flight_date) {
 		this.flight_date = flight_date;
 	}
 
@@ -107,20 +109,5 @@ public class Flight {
 	public void setLive(Live live) {
 		this.live = live;
 	}
-
-	@Override
-	public String toString() {
-		return "Flight [flight_date=" + flight_date + ", flight_status=" + flight_status + ", departure=" + departure
-				+ ", arrival=" + arrival + ", airline=" + airline.toString() + ", nestedFlight=" + nestedFlight.toString() +"]";
-	}
-
-
-//	@Override
-//	public String toString() {
-//		return "Flight [flight_date=" + flight_date + ", flight_status=" + flight_status 
-//				+ ", departure:[\n" + " " + ", airport=" + departure.getActual()+ ", timezone=" + departure.getTimezone() + ", iata=" + departure.getIata() + ", icao=" + departure.getIcao() + ", terminal=" + departure.getTerminal()+ ", gate=" + departure.getGate() + ", delay=" + departure.getDelay() 
-//				+", scheduled=" + departure.getScheduled() + ", estimated=" + departure.getEstimated() + ", actual=" + departure.getActual() 
-//				+ ", estimated_runway=" + departure.getEstimated_runway() + ", actual_runway=" + departure.getActual_runway()  + "]"+"]";
-//	}
 	
 }

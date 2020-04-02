@@ -5,13 +5,12 @@ import java.net.URI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.aviation.rest.webservices.restfulwebservices.AirportService;
+import com.aviation.rest.webservices.restfulwebservices.exceptions.FlightNotFoundException;
 import com.aviation.rest.webservices.restfulwebservices.model.Flight;
 import com.aviation.rest.webservices.restfulwebservices.model.FlightList;
 import com.aviation.rest.webservices.restfulwebservices.model.StringBlob;
@@ -53,20 +52,28 @@ public class FlightsResource {
 	private FlightsDaoService service;
 
 	@Cacheable("flights")
-	// @CachePut(value="flights")
 	@GetMapping("/flights")
-	public FlightList retrieveAllFlights() {
+	public FlightList retrieveAllFlights(){
+		FlightList flights = service.getAllFlights();
+		if (flights==null)
+			throw new FlightNotFoundException("Flights were not found");
 
-		return service.getAllFlights();
+		return flights;
 	}
+
 
 	@GetMapping("/flights/{number}")
 	public Flight retrieveFlightByNumber(@PathVariable int number) {
-		return service.findFlight(number);
+		Flight flight = service.findFlight(number);
+
+		if(flight == null)
+			throw new FlightNotFoundException(" Flight with  number: "+number+" could not be found");
+		return flight;
 	}
 
-	@PostMapping(value = "/flights", consumes = "application/json")
-	public ResponseEntity<Object> createFlight(@RequestBody Flight flight) {
+	@CachePut(value="flights")
+	@PostMapping(value="/flights", consumes="application/json")
+	public ResponseEntity<Object> createFlight(@Valid @RequestBody Flight flight) {
 		Flight savedflight = service.saveFlight(flight);
 		// returns status of some operations
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest() // will return uri /users
@@ -80,5 +87,6 @@ public class FlightsResource {
 		return ResponseEntity.created(location).build();
 
 	}
+
 
 }
