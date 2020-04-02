@@ -41,5 +41,10 @@ public class Airline {
 	public void setIcao(String icao) {
 		this.icao = icao;
 	}
+
+	@Override
+	public String toString() {
+		return "Airline [name=" + name + ", iata=" + iata + ", icao=" + icao + "]";
+	}
 	
 }

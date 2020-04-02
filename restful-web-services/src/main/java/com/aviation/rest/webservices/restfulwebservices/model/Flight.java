@@ -108,13 +108,19 @@ public class Flight {
 		this.live = live;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Flight [flight_date=" + flight_date + ", flight_status=" + flight_status 
-				+ ", departure:[\n" + " " + ", airport=" + departure.getActual()+ ", timezone=" + departure.getTimezone() + ", iata=" + departure.getIata() + ", icao=" + departure.getIcao() + ", terminal=" + departure.getTerminal()+ ", gate=" + departure.getGate() + ", delay=" + departure.getDelay() 
-				+", scheduled=" + departure.getScheduled() + ", estimated=" + departure.getEstimated() + ", actual=" + departure.getActual() 
-				+ ", estimated_runway=" + departure.getEstimated_runway() + ", actual_runway=" + departure.getActual_runway()  + "]"+"]";
+		return "Flight [flight_date=" + flight_date + ", flight_status=" + flight_status + ", departure=" + departure
+				+ ", arrival=" + arrival + ", airline=" + airline.toString() + ", nestedFlight=" + nestedFlight.toString() +"]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Flight [flight_date=" + flight_date + ", flight_status=" + flight_status 
+//				+ ", departure:[\n" + " " + ", airport=" + departure.getActual()+ ", timezone=" + departure.getTimezone() + ", iata=" + departure.getIata() + ", icao=" + departure.getIcao() + ", terminal=" + departure.getTerminal()+ ", gate=" + departure.getGate() + ", delay=" + departure.getDelay() 
+//				+", scheduled=" + departure.getScheduled() + ", estimated=" + departure.getEstimated() + ", actual=" + departure.getActual() 
+//				+ ", estimated_runway=" + departure.getEstimated_runway() + ", actual_runway=" + departure.getActual_runway()  + "]"+"]";
+//	}
 	
 }

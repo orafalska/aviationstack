@@ -43,6 +43,11 @@ public class NestedFlight {
 	public void setCodeshared(Codeshared codeshared) {
 		this.codeshared = codeshared;
 	}
+	@Override
+	public String toString() {
+		return "NestedFlight [number=" + number + ", iata=" + iata + ", icao=" + icao + ", codeshared=" + codeshared
+				+ "]";
+	}
 	
 	
 }

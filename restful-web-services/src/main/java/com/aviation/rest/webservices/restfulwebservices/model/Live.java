@@ -63,6 +63,12 @@ public class Live {
 	public void setIs_ground(String is_ground) {
 		this.is_ground = is_ground;
 	}
+	@Override
+	public String toString() {
+		return "Live [updated=" + updated + ", latitude=" + latitude + ", longitude=" + longitude + ", altitude="
+				+ altitude + ", direction=" + direction + ", speed_horizontal=" + speed_horizontal + ", speed_vertical="
+				+ speed_vertical + ", is_ground=" + is_ground + "]";
+	}
 	
 	
 	
