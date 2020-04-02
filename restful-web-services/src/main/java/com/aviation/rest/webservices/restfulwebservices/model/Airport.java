@@ -1,7 +1,7 @@
 package com.aviation.rest.webservices.restfulwebservices.model;
 
 public class Airport {
-
+    private int id;
 	private String gmt;
 	private String iata_code;
 	private String city_iata_code;
@@ -16,7 +16,9 @@ public class Airport {
 	private String timezone;
 
 	public Airport () {}
-	public Airport (String gmt,
+	public Airport (
+					
+					String gmt,
 					String iata_code,
 					String city_iata_code,
 					String icao_code,
@@ -28,7 +30,6 @@ public class Airport {
 					String country_name,
 					String phone_number,
 					String timezone) {
-		
 		this.gmt = gmt;
 		this.iata_code = iata_code;
 		this.city_iata_code = city_iata_code;
@@ -44,6 +45,12 @@ public class Airport {
 		
 	}
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getGmt() {
 		return gmt;
 	}
@@ -142,7 +149,7 @@ public class Airport {
 
 	@Override
 	public String toString() {
-		return "Airport [gmt=" + gmt + ", iata_code=" + iata_code + ", city_iata_code=" + city_iata_code
+		return "Airport [id=" + id + ", gmt=" + gmt + ", iata_code=" + iata_code + ", city_iata_code=" + city_iata_code
 				+ ", icao_code=" + icao_code + ", country_iso2=" + country_iso2 + ", geoname_id=" + geoname_id
 				+ ", latitude=" + latitude + ", longitude=" + longitude + ", airport_name=" + airport_name
 				+ ", country_name=" + country_name + ", phone_number=" + phone_number + ", timezone=" + timezone + "]";

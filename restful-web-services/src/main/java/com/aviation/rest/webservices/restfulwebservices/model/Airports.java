@@ -23,5 +23,9 @@ public class Airports {
 	public void setData(List<Airport> data) {
 		this.data = data;
 	}
+	
+	public void addAirport(Airport airport) {
+		data.add(airport);
+	}
 
 }
