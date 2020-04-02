@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,6 +26,7 @@ public class FlightsDaoService {
 	private String apiKey;
 	private FlightList response;
 	
+
 	public FlightList getAllFlights(){
 		
 		response = restTemplate.getForObject(
@@ -44,17 +47,17 @@ public class FlightsDaoService {
 				return flight;
 			}
 		}
-		System.out.println("Flight could not be found");
+//		System.out.println("Flight could not be found");
 		return null;
 	}
 	
-	
+
 	public Flight saveFlight(Flight flight) {
 		flight.getNestedFlight().setNumber(Integer.toString(++number));
 		response = restTemplate.getForObject(
 				"http://api.aviationstack.com/v1/flights"+"?access_key="+apiKey, FlightList.class );
 		
-		System.out.println(flight.getFlight_date());
+
 		try {
 			response.addFlight(flight);
 		}catch (Exception e) {

@@ -32,5 +32,8 @@ public class FlightList {
 		flightList.add(flight);
 	}
 
+	public int size() {
+		return flightList.size();
+	}
 
 }
