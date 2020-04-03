@@ -35,15 +35,14 @@ public class FlightsDaoService {
 	
 	public Flight findFlight(int number) {
 		response = restTemplate.getForObject("http://api.aviationstack.com/v1/flights"+"?access_key="+apiKey, FlightList.class );
+
 		for(Flight flight : response.getFlightList()) {
 			if (Integer.parseInt(flight.getNestedFlight().getNumber())==number) {
 				LOG.info("Flight with number: "+number+" has been found.");
 				return flight;
-			} else {
-				throw new FlightNotFoundException("Flight with number: "+number+" could not be found");
-			}
+			}			
 		}
-		return null;
+		throw new FlightNotFoundException("Flight with number: "+number+" could not be found");
 	}
 	
 	public Flight saveFlight(Flight flight) {
@@ -51,7 +50,6 @@ public class FlightsDaoService {
 		response = restTemplate.getForObject(
 				"http://api.aviationstack.com/v1/flights"+"?access_key="+apiKey, FlightList.class );
 		
-
 		try {
 			response.addFlight(flight);
 		}catch (Exception e) {

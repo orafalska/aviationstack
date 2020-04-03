@@ -23,7 +23,6 @@ public class Scheduler {
 	@Scheduled(cron="${cronjob.schedule}")
 	public void updateCache(){
 	    service.getAllFlights();
-	    System.out.println("Cron job - done");
 	    LOG.info("Cron job has been performed");
 	}
 
