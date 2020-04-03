@@ -1,19 +1,12 @@
 package com.aviation.rest.webservices.restfulwebservices.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.aviation.rest.webservices.restfulwebservices.model.Flight;
 import com.aviation.rest.webservices.restfulwebservices.model.FlightList;
-
-
 
 @Component
 public class FlightsDaoService {

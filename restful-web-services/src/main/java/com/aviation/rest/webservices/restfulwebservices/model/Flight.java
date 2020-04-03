@@ -1,16 +1,12 @@
 package com.aviation.rest.webservices.restfulwebservices.model;
 
 import java.sql.Date;
-
-import javax.annotation.sql.DataSourceDefinition;
-
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Flight {
+
 	@DateTimeFormat
 	private Date flight_date;
 	private String flight_status;
@@ -110,4 +106,10 @@ public class Flight {
 		this.live = live;
 	}
 	
+	@Override
+	public String toString() {
+		return "Flight [flight_date=" + flight_date + ", flight_status=" + flight_status + ", departure=" + departure
+				+ ", arrival=" + arrival + ", airline=" + airline + ", nestedFlight=" + nestedFlight + ", aircraft="
+				+ aircraft +  "]";
+	}
 }

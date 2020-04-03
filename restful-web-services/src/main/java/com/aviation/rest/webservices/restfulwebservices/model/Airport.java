@@ -1,10 +1,19 @@
 package com.aviation.rest.webservices.restfulwebservices.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Airport {
-    private int id;
+	private int id;
 	private String gmt;
+	@NotNull
+	@Size(min = 3, max = 3, message = "Wrong lenght.")
 	private String iata_code;
+	@NotNull
+	@Size(min = 3, max = 3, message = "Wrong lenght.")
 	private String city_iata_code;
+	@NotNull
+	@Size(min = 4, max = 4, message = "Wrong lenght.")
 	private String icao_code;
 	private String country_iso2;
 	private String geoname_id;
@@ -15,21 +24,14 @@ public class Airport {
 	private String phone_number;
 	private String timezone;
 
-	public Airport () {}
-	public Airport (
-					
-					String gmt,
-					String iata_code,
-					String city_iata_code,
-					String icao_code,
-					String country_iso2,
-					String geoname_id,
-					String latitude,
-					String longitude,
-					String airport_name,
-					String country_name,
-					String phone_number,
-					String timezone) {
+	public Airport() {
+	}
+
+	public Airport(
+
+			String gmt, String iata_code, String city_iata_code, String icao_code, String country_iso2,
+			String geoname_id, String latitude, String longitude, String airport_name, String country_name,
+			String phone_number, String timezone) {
 		this.gmt = gmt;
 		this.iata_code = iata_code;
 		this.city_iata_code = city_iata_code;
@@ -42,15 +44,17 @@ public class Airport {
 		this.country_name = country_name;
 		this.phone_number = phone_number;
 		this.timezone = timezone;
-		
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getGmt() {
 		return gmt;
 	}
@@ -154,22 +158,5 @@ public class Airport {
 				+ ", latitude=" + latitude + ", longitude=" + longitude + ", airport_name=" + airport_name
 				+ ", country_name=" + country_name + ", phone_number=" + phone_number + ", timezone=" + timezone + "]";
 	}
-	
-//	@Override
-//    public String toString() {
-//        return "{" +
-//                "gmt='" + gmt + '\'' +
-//                ", iata_code='" + iata_code + '\'' +
-//                ", city_iata_code='" + city_iata_code + '\'' +
-//                ", icao_code='" + icao_code + '\'' +
-//                ", country_iso2='" + country_iso2 + '\'' +
-//                ", geoname_id='" + geoname_id + '\'' +
-//                ", latitude='" + latitude + '\'' +
-//                ", longitude='" + longitude + '\'' +
-//                ", airport_name='" + airport_name + '\'' +
-//                ", country_name='" + country_name + '\'' +
-//                ", phone_number='" + phone_number + '\'' +
-//                ", timezone='" + timezone + '\'' +
-//                '}';
-    
+
 }

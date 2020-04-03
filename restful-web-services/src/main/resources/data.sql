@@ -28,5 +28,5 @@ VALUES
     'RIX',
     'United States',
     '267538824',
-    'America\/New_York'
+    'America/New_York'
   );

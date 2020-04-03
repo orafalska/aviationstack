@@ -7,14 +7,12 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.aviation.rest.webservices.restfulwebservices.AirportService;
 import com.aviation.rest.webservices.restfulwebservices.exceptions.FlightNotFoundException;
 import com.aviation.rest.webservices.restfulwebservices.model.Flight;
 import com.aviation.rest.webservices.restfulwebservices.model.FlightList;
@@ -41,7 +38,7 @@ public class FlightsResource {
 		LOG.info("Flight by id " + id );
 		StringBlob result = jtm.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper<>(StringBlob.class));
 
-		LOG.info("Flight by id " + id + " is foundnd: " + result.getFlight());
+		LOG.info("Flight by id " + id + " is foundnd: " + result.toString());
 
 		return result.getFlight();
 	}
