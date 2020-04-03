@@ -35,7 +35,7 @@ public class FlightsDaoService {
 	
 	public Flight findFlight(int number) {
 		response = restTemplate.getForObject("http://api.aviationstack.com/v1/flights"+"?access_key="+apiKey, FlightList.class );
-		System.out.println(response.size());
+
 		for(Flight flight : response.getFlightList()) {
 			if (Integer.parseInt(flight.getNestedFlight().getNumber())==number) {
 				LOG.info("Flight with number: "+number+" has been found.");
