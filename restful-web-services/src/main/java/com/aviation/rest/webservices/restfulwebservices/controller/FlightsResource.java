@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import com.aviation.rest.webservices.restfulwebservices.exceptions.FlightNotFoundException;
 import com.aviation.rest.webservices.restfulwebservices.model.Flight;
 import com.aviation.rest.webservices.restfulwebservices.model.FlightList;
 import com.aviation.rest.webservices.restfulwebservices.model.StringBlob;

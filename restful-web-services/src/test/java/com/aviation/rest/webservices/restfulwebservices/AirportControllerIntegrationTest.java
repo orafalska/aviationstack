@@ -46,7 +46,7 @@ public class AirportControllerIntegrationTest {
 				+ "    \"longitude\": \"36.821392\",\r\n" + "    \"airport_name\": \"RIX\",\r\n"
 				+ "    \"country_name\": \"United States\",\r\n" + "    \"phone_number\": \"267538824\",\r\n"
 				+ "    \"timezone\": \"America\\/New_York\"\r\n" + "}";
-		System.out.println(response.getBody());
+
 		JSONAssert.assertEquals(expected, response.getBody(), false);
 	}
 

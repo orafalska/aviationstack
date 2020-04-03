@@ -118,8 +118,6 @@ public class FlightControllerTest {
 		when(controller.retrieveFlightByNumber(Integer.parseInt(flight1.getNestedFlight().getNumber()))).thenReturn(flight1);
 		Flight found = controller.retrieveFlightByNumber(Integer.parseInt(flight1.getNestedFlight().getNumber()));
 	
-		
-		System.out.println(found);
 		assertNotNull(found);
 		assertEquals(flight1.getFlight_date(), found.getFlight_date());
 	}

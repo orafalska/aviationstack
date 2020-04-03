@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,9 +14,6 @@ import com.aviation.rest.webservices.restfulwebservices.model.Airports;
 public class AirportService {
 	public static final Logger LOG = LoggerFactory.getLogger(AirportService.class);
 	
-//	@Value("${api.key}")
-//	private String apiKey;
-
 	int id = 0;
 	private static final String API_AIRPORTS = "http://api.aviationstack.com/v1/airports?access_key=";
 	private String apiKey = "fb493e5f72018ba2107e835d06001b18";
@@ -47,7 +43,6 @@ public class AirportService {
 			Airports response = restTemplate.getForObject(API_AIRPORTS + apiKey, Airports.class);
 
 			for (Airport airport : response.getAirports()) {
-				System.out.println(airport.toString());
 				
 				if (airport.getId() == id) {
 
