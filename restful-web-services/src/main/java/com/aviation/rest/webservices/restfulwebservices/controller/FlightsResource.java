@@ -58,9 +58,7 @@ public class FlightsResource {
 	@GetMapping("/flights")
 	public FlightList retrieveAllFlights(){
 		FlightList flights = service.getAllFlights();
-		if (flights==null)
-			throw new FlightNotFoundException("Flights were not found");
-
+		
 		return flights;
 	}
 
@@ -69,8 +67,6 @@ public class FlightsResource {
 	public Flight retrieveFlightByNumber(@PathVariable int number) {
 		Flight flight = service.findFlight(number);
 
-		if(flight == null)
-			throw new FlightNotFoundException(" Flight with  number: "+number+" could not be found");
 		return flight;
 	}
 
@@ -78,18 +74,14 @@ public class FlightsResource {
 	@PostMapping(value="/flights", consumes="application/json")
 	public ResponseEntity<Object> createFlight(@Valid @RequestBody Flight flight) {
 		Flight savedflight = service.saveFlight(flight);
-		// returns status of some operations
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest() // will return uri /users
-				.path("/{number}") // will return uri {number} //path allows to append something to uri, so
-									// basically once we have created a new flight we will show it at once, by
-									// getting its number savedFlight.getNestedFlight().getNumber() and showing its
-									// "page" /flights/{number}
+		
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest() 
+				.path("/{number}") 
 				.buildAndExpand(savedflight.getNestedFlight().getNumber()).toUri();
 		insertFlight(savedflight);
 		LOG.info("Is saved flight: " + savedflight.toString());
 		return ResponseEntity.created(location).build();
 
 	}
-
 
 }
